@@ -6,14 +6,14 @@ if(window.location.href.indexOf("/search/") != -1) {
 };
 
 function init() {
-  var definitions = document.querySelectorAll("div.exact_block div.concept_light");
+  var definitions = document.querySelectorAll("div#primary div.concept_light");
   definitions.forEach(element => addSaveButton(element));
   definitions.forEach(element => addClickFn(element, addElementToData));
 }
 
 function addSaveButton(element) {
-  var parent = element.querySelector('div.concept_light-status');
-  parent.appendChild(getSaveButton());
+  element.querySelector('div#primary div.concept_light-status')
+    .appendChild(getSaveButton());
 }
 
 function getSaveButton() {
@@ -26,7 +26,8 @@ function getSaveButton() {
 }
 
 function addLoadButton() {
-  document.querySelector('nav.nav-main_navigation ul.links').appendChild(getLoadButton());
+  document.querySelector('nav.nav-main_navigation ul.links')
+    .appendChild(getLoadButton());
 }
 
 function getLoadButton() {
@@ -38,7 +39,8 @@ function getLoadButton() {
 }
 
 function addClearButton() {
-  document.querySelector('nav.nav-main_navigation ul.links').appendChild(getClearButton());
+  document.querySelector('nav.nav-main_navigation ul.links')
+    .appendChild(getClearButton());
 }
 
 function getClearButton() {
@@ -77,11 +79,13 @@ function addClickFn(element, fn) {
 }
 
 function addElementToData(event) {
-  event.preventDefault();
-
   if(event.target.getAttribute('name') !== 'save') {
     return;
   }
+
+  event.preventDefault();
+
+  event.target.parentNode.removeChild(event.target);
 
   var element = event.currentTarget;
   browser.storage.local.get("data")

@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
   "name": "JishoSaved",
-  "version": "1.0",
+  "version": "1.1",
 
-  "description": "Improves the experience when using Jisho.",
+  "description": "Adds ability to save and load definitions in jisho.org.",
 
-  "permissions": ["storage"],
+  "permissions": ["storage", "unlimitedStorage"],
 
   "icons": {
     "48": "icons/icon-48.png"
